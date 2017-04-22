@@ -10,4 +10,13 @@ git clone https://github.com/YourFork/cosmos.git
 git remote add upstream git@github.com:variomeproj/cosmos.git
 ```
 4. Branch
+Following git-flow (http://nvie.com/posts/a-successful-git-branching-model/), the project have both a master and
+a develop branch. The general rule is that if you are bug fixing, then branch from master and if you are adding 
+a new feature then branch from develop.
+```
+$ git checkout master
+$ git pull upstream master && git push origin master
+$ git checkout -b feature/add-readme
+```
+5. Do your work
 
