@@ -16,7 +16,11 @@ a new feature then branch from develop.
 ```
 $ git checkout master
 $ git pull upstream master && git push origin master
-$ git checkout -b feature/add-readme
+$ git checkout -b your-branch-name
 ```
 5. Do your work
-
+6. Push to github
+```
+git push -u origin your-branch-name
+```
+7. Create PR on github
