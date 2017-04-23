@@ -24,7 +24,7 @@ class Country(models.Model):
         choices=hvp_status_choices,
         default='Interim',
     ),
-    date = models.DateField('hvp date')
+    hvp_date = models.DateField()
     background = models.TextField()
     licensing = models.CharField(max_length=200)
     personnel = models.ManyToManyField(User, related_name='personnel')
@@ -34,35 +34,71 @@ class Country(models.Model):
     other_societies = models.ManyToManyField(Society)
     external_data = models.ManyToManyField(ExternalData)
 
+    def __str__(self):
+        return self.name
 
-class DNAAnalysisRegulation(models.Model):
+
+class Regulation(models.Model):
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    regulation_text = models.TextField()
+
+    def __str__(self):
+        return self.regulation_text[:80]
+
+    class Meta:
+        abstract = True
+
+
+class DNAAnalysisManager(models.Manager):
+    def get_queryset(self):
+        return super(DNAAnalysisManager, self).get_queryset().filter(reg_type='DNAAnalysis')
+
+
+class DNAAnalysisRegulation(Regulation):
     """
     DNA analysis and interpretation practices and regulations
     in a country.
 
-    Alternatively, model inheritance can be used for all regulations.
+    TODO: when creating an instance, make sure reg_type is the right value
     """
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    regulation_text = models.TextField()
+    reg_type = models.CharField(max_length=32, default='DNAAnalysis', editable=False)
+    objects = DNAAnalysisManager()
+
+    class Meta:
+        db_table = 'country_regulation'
+        managed = True
 
     
-class DNAStorageRegulation(models.Model):
+class DNAStorageManager(models.Manager):
+    def get_queryset(self):
+        return super(DNAStorageManager, self).get_queryset().filter(reg_type='DNAStorage')
+
+
+class DNAStorageRegulation(Regulation):
     """
     DNA storage practices and regulations in a country.
-
-    Alternatively, model inheritance can be used for all regulations.
     """
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    regulation_text = models.TextField()
+    reg_type = models.CharField(max_length=32, default='DNAStorage', editable=False)
+    objects = DNAStorageManager()
+
+    class Meta:
+        db_table = 'country_regulation'
+        managed = False
 
 
-class DNAReportingRegulation(models.Model):
+class DNAReportingManager(models.Manager):
+    def get_queryset(self):
+        return super(DNAStorageManager, self).get_queryset().filter(reg_type='DNAReporting')
+
+
+class DNAReportingRegulation(Regulation):
     """
     DNA reporting and sharing regulations in a country.
-
-    Alternatively, model inheritance can be used for all regulations.
     """
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    regulation_text = models.TextField()
+    reg_type = models.CharField(max_length=32, default='DNAReporting', editable=False)
+    objects = DNAReportingManager()
 
+    class Meta:
+        db_table = 'country_regulation'
+        managed = False
 
