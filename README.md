@@ -42,6 +42,18 @@ $ pip install -r requirements.txt
 The project is configured to use MySQL database. Export environments before run local server:
 
 ```
-$ export DB_NAME=your_db_name DB_USER=your_db_user DB_PWD=your_db_password
+$ export DB_HOST=localhost DB_NAME=your_db_name DB_USER=your_db_user DB_PWD=your_db_password
+$ python manage.py migrate
+$ python manage.py loaddata db.json
 $ python manage.py runserver 0.0.0.0:your_port
 ```
+
+## Use SB Admin 2
+[SB Admin 2](http://startbootstrap.com/template-overviews/sb-admin-2/) is an open source, admin dashboard template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
+
+To begin using this template, choose one of the following options to get started:
+* [Download the latest release on Start Bootstrap](http://startbootstrap.com/template-overviews/sb-admin-2/)
+* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-sb-admin-2.git`
+* Fork the repo
+
+See also: http://ashishacharya.com/django-html-template-sb-admin2/

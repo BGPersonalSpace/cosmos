@@ -1,5 +1,238 @@
-<h1>country name</h1>
+{% extends "dashboard/base.html" %}
 
+{% block pagetitle %}
+{{ country.name }} - Cosmos
+{% endblock pagetitle %}
+
+{% block content %}
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-Country detail page
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header"><img src="http://www.humanvariomeproject.org/images/flags/GB.png" alt="Flag of {{ country.name }}"> {{ country.name }} <span class="badge">HVP Country Node</span></h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+        <!-- /.row -->
+        <div class="row">
+          <div class="col-lg-6">
+          <!-- Summary -->
+            <div class="panel-group" id="summary-accordion" role="tablist" aria-multiselectable="true">
+
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h2 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#summary-accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Background</a></h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    <p>{{ country.background }}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- /. Panel One -->
+
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h2 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" role="button" data-parent="#summary-accordion" href="#collapseTwo" aria-expanded="false" aria-controls"collapseTwo">Laboratory Standards and Regulations</a></h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+                    <p>{{ country.standard_regulation }}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- ./ Panel Two -->
+
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                  <h2 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" role="button" data-parent="#summary-accordion" href="#collapseThree" aria-expanded="false" aria-controls"collapseThree">Laboratory Personnel and Licensing</a></h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div class="panel-body">
+                    <p>{{ country.licensing }}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- ./ Panel Three -->
+
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFour">
+                  <h2 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" role="button" data-parent="#summary-accordion" href="#collapseFour" aria-expanded="false" aria-controls"collapseFour">DNA Analysis and Interpretation Practices and Regulations</a></h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                  <div class="panel-body">
+                    <p>{{ country.dna_analysis_regulation }}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- ./ Panel Four -->
+
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFive">
+                  <h2 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" role="button" data-parent="#summary-accordion" href="#collapseFive" aria-expanded="false" aria-controls"collapseFive">DNA Storage Practices and Regulations</a></h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                  <div class="panel-body">
+                    <p>{{ country.dna_storage_regulation }}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- ./ Panel Five -->
+
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSix">
+                  <h2 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" role="button" data-parent="#summary-accordion" href="#collapseSix" aria-expanded="false" aria-controls"collapseSix">DNA Data Reporting and Sharing Regulations</a></h4>
+                </div>
+                <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                  <div class="panel-body">
+                    <p>{{ country.dna_reporting_regulation }}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- ./ Panel Six -->
+
+            </div>
+            <!-- /.panelgroup -->
+
+          </div>
+          <!-- /.col-lg-6 -->
+
+          <div class="col-lg-6">
+            <div class="row">
+            <!-- Country Summary Row -->
+              <div class="col-lg-12">
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h2 class="panel-title">General Information</h2>
+                  </div>
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <th scope="col">Region</th>
+                        <td>{{ country.region }}</td>
+                      <tr>
+                        <th scope="row">HVP Country Node Status</th>
+                        <td>{{ country.hvp_status }} ({{ country.hvp_date }})</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">ICCAC Representative</th>
+                        <td>
+                        {% for p in country.representatives.all %}
+                            {{ p.first_name }} {{ p.last_name }}<br/>
+                        {% endfor %}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">External Data</th>
+                        <td>
+                        {% for e in country.external_data.all %}
+                            <a href="{{ e.url }}" target="_blank">{{ e.name }}</a><br/>
+                        {% endfor %}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">National Human Genetics Society</th>
+                        <td>
+                            <a href="{{ country.genetics_society_url }}" target="_blank">{{ country.genetics_society }}</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Others Societies</th>
+                        <td>
+                        {% for e in country.other_societies.all %}
+                            <a href="{{ e.url }}" target="_blank">{{ e.name }}</a><br/>
+                        {% endfor %}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+            <!-- PWI Involvement Row -->
+              <div class="col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h2 class="panel-title">Project-Wide Initiative Involvement</h3>
+                  </div>
+                  <table class="table">
+                    <tr>
+                      {% for p in country.projects.all %}
+                        <td class="text-center" style="vertical-align:middle">
+                          <a href="{{ p.url }}" target="_blank"><img src="{{ p.icon.url }}"></a>
+                        </td>
+                      {% endfor %}
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+            <!-- Test and Lab Count Row -->
+              <div class="col-md-6">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-xs-3">
+                        <i class="fa fa-flask fa-5x"></i>
+                      </div>
+                      <div class="col-xs-9 text-right">
+                        <div class="huge">{{ test_count }}</div>
+                        <div>Available Tests</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-footer">
+                    <a href="tests.html">
+                      <span class="pull-left">View Details</span>
+                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    </a>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                <!-- /.panel -->
+              </div>
+
+              <div class="col-md-6">
+                <div class="panel panel-green">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-xs-3">
+                        <i class="fa fa-hospital-o fa-5x"></i>
+                      </div>
+                      <div class="col-xs-9 text-right">
+                        <div class="huge">{{ lab_count }}</div>
+                        <div>Clinical Labs</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-footer">
+                    <a href="labs.html">
+                      <span class="pull-left">View Details</span>
+                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    </a>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                <!-- /.panel -->
+              </div>
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+
+{% endblock content %}
+
+
