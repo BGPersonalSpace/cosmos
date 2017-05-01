@@ -7,5 +7,5 @@ urlpatterns = [
     # ex: /country/
     # url(r'^$', views.index, name='index'),
     # ex: /country/5/
-    url(r'^(?P<country_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^(?P<country_id>[0-9]+)/$', views.summary, name='summary'),
 ]
