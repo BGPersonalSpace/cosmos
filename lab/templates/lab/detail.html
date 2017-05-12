@@ -1,0 +1,131 @@
+{% extends "dashboard/base.html" %}
+
+{% block pagetitle %}
+{{ lab.name }} - Cosmos
+{% endblock pagetitle %}
+
+{% load staticfiles %}
+
+{% block content %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ lab.name }}</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <p>{{ lab.name }}{% if lab.abbreviation %}, {{ lab.abbreviation }}{% endif %}<br/>
+                {% if lab.institution %}{{ lab.institution }}<br/>{% endif %}
+                {% if lab.city %}{{ lab.city }}<br/>{% endif %}
+                {{ lab.country }} {{ lab.zip }}<br/>
+                Phone: <a href="tel:+442920742641">+44 2920742641</a><br/>
+                Fax: +44 2920744043<br/>
+                Email: <a href="mailto:lab.genetics@wales.nhs.uk">lab.genetics@wales.nhs.uk</a><br/>
+                Website: <a href="http://www.wales.nhs.uk/AWMGS" target="_blank">http://www.wales.nhs.uk/AWMGS</a><br/>
+                <span class="pull-right">GTR Lab ID: 320029, Last updated:2016-03-30</span><p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2 class="panel-title">Personnel</h2>
+              </div>
+              <div class="panel-body">
+
+                <ul class="list-unstyled"><li style="padding-bottom:1em;"><strong>Director: </strong>Rachel Butler, Lab Director<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:rachel.butler@wales.nhs.uk" target="_blank">rachel.butler@wales.nhs.uk</a></li>
+                <li style="padding-bottom:1em;">Michaela John, Business Manager<br>Phone: +44-0-2920742641<br>Fax: +44-0-2920744043<br>Email: <a href="mailto:michaela.john@wales.nhs.uk" target="_blank">michaela.john@wales.nhs.uk</a></li>
+                <li style="padding-bottom:1em;">Christopher Anderson, Senior Clinical Scientist<br>Phone: +44-2920742641<br>Fax: +44-2920744043<br>Email: <a href="mailto:christopher.anderson@wales.nhs.uk" target="_blank">christopher.anderson@wales.nhs.uk</a></li>
+                <li style="padding-bottom:1em;">Peter Davies, Clinical Scientist<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:daviespa2@cf.ac.uk" target="_blank">daviespa2@cf.ac.uk</a></li><li>Laz Lazarou, Clinical Scientist<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:laz.lazarou@wales.nhs.uk" target="_blank">laz.lazarou@wales.nhs.uk</a></li>
+                <li style="padding-bottom:1em;">Sheila Palmer-Smith, Senior Clinical Scientist<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:sheila.palmer-smith@wales.nhs.uk" target="_blank">sheila.palmer-smith@wales.nhs.uk</a></li>
+                <li style="padding-bottom:1em;">Helen Roberts, Senior Clinical Scientist<br>Phone: +44-2920742641<br>Fax: +44-2920744043<br>Email: <a href="mailto:helen.roberts20@wales.nhs.uk" target="_blank">helen.roberts20@wales.nhs.uk</a></li>
+                <li style="padding-bottom:1em;">Lyndon Rosser, Clinical Scientist<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:lyndon.rosser@wales.nhs.uk" target="_blank">lyndon.rosser@wales.nhs.uk</a></li>
+                <li style="padding-bottom:1em;">Sharon Whatley, Senior Clinical Scientist<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:linda.meredith@wales.nhs.uk" target="_blank">linda.meredith@wales.nhs.uk</a></li></ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2 class="panel-title">Conditions and tests</h2>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                  <tbody>
+                    <tr><td>Autosomal hypohidrotic ectodermal dysplasia</td><td>1 test</td></tr>
+                    <tr><td>Azorean disease</td><td>1 test</td></tr>
+                    <tr><td>Baraitser-Winter syndrome 1</td><td>1 test</td></tr>
+                    <tr><td>Baraitser-Winter Syndrome 2</td><td>1 test</td></tr>
+                    <tr><td>Breast-ovarian cancer, familial 1</td><td>1 test</td></tr>
+                    <tr><td>Breast-ovarian cancer, familial 2</td><td>1 test</td></tr>
+                    <tr><td>Christianson syndrome</td><td>1 test</td></tr>
+                    <tr><td>Cystic fibrosis</td><td>1 test</td></tr>
+                    <tr><td>Deafness, autosomal recessive 1A</td><td>2 tests</td></tr>
+                    <tr><td>Deafness, nonsyndromic sensorineural, mitochondrial</td><td>1 test</td></tr>
+                    <tr><td>Dominant hereditary optic atrophy</td><td>1 test</td></tr>
+                    <tr><td>Dystrophinopathies</td><td>1 test</td></tr>
+                    <tr><td>Early infantile epileptic encephalopathy 2</td><td>1 test</td></tr>
+                    <tr><td>Early infantile epileptic encephalopathy 4</td><td>1 test</td></tr>
+                    <tr><td>Spinocerebellar ataxia 2</td><td>1 test</td></tr>
+                    <tr><td>Spinocerebellar ataxia 6</td><td>1 test</td></tr>
+                    <tr><td>Spinocerebellar ataxia 7</td><td>1 test</td></tr>
+                    <tr><td>Steinert myotonic dystrophy syndrome</td><td>1 test</td></tr>
+                    <tr><td>Tuberous sclerosis 1</td><td>1 test</td></tr>
+                    <tr><td>Tuberous sclerosis 2</td><td>1 test</td></tr>
+                    <tr><td>Turcot syndrome</td><td>1 test</td></tr>
+                    <tr><td>Wagner syndrome</td><td>1 test</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2 class="panel-title">List of Services</h2>
+              </div>
+              <div class="panel-body">
+                <p>This lab has no services.</p>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2 class="panel-title">List of Certifications</h2>
+              </div>
+              <div class="panel-body">
+                <p>CPA, Number: 2381, Expiration date: 2016-09-01</p>
+              </div>
+            </div>
+          </div>
+        </div>
+{% endblock content %}
+
+{% block extrajs %}
+
+  <!-- DataTables JavaScript -->
+  <script src="{% static 'dashboard/vendor/datatables/js/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'dashboard/vendor/datatables-plugins/dataTables.bootstrap.min.js' %}"></script>
+  <script src="{% static 'dashboard/vendor/datatables-responsive/dataTables.responsive.js' %}"></script>
+
+  <!-- Page-Level Scripts - Tables - Use for reference -->
+  <script>
+  $(document).ready(function() {
+    $('#dataTables-example').DataTable({
+      responsive: true
+    });
+  });
+  </script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src="{% static 'dashboard/dist/js/sb-admin-2.js' %}"></script>
+
+{% endblock extrajs %}

@@ -20,6 +20,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^country/', include('country.urls')),
+    url(r'^lab/', include('lab.urls')),
     url(r'^admin/', admin.site.urls),
 ]
 
