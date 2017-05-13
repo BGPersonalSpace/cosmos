@@ -24,11 +24,11 @@
                 {% if lab.institution %}{{ lab.institution }}<br/>{% endif %}
                 {% if lab.city %}{{ lab.city }}<br/>{% endif %}
                 {{ lab.country }} {{ lab.zip }}<br/>
-                Phone: <a href="tel:+442920742641">+44 2920742641</a><br/>
-                Fax: +44 2920744043<br/>
-                Email: <a href="mailto:lab.genetics@wales.nhs.uk">lab.genetics@wales.nhs.uk</a><br/>
-                Website: <a href="http://www.wales.nhs.uk/AWMGS" target="_blank">http://www.wales.nhs.uk/AWMGS</a><br/>
-                <span class="pull-right">GTR Lab ID: 320029, Last updated:2016-03-30</span><p>
+                Phone: <a href="tel:{{ lab.phone }}">{{ lab.phone }}</a><br/>
+                Fax: {{ lab.fax }}<br/>
+                Email: <a href="mailto:{{ lab.email }}">{{ lab.email }}</a><br/>
+                Website: <a href="{{ lab.website }}" target="_blank">{{ lab.website }}</a><br/>
+                <span class="pull-right">GTR Lab ID: {{ lab.gtr_lab_id }}</span><p>
               </div>
             </div>
           </div>
@@ -42,14 +42,16 @@
               </div>
               <div class="panel-body">
 
-                <ul class="list-unstyled"><li style="padding-bottom:1em;"><strong>Director: </strong>Rachel Butler, Lab Director<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:rachel.butler@wales.nhs.uk" target="_blank">rachel.butler@wales.nhs.uk</a></li>
-                <li style="padding-bottom:1em;">Michaela John, Business Manager<br>Phone: +44-0-2920742641<br>Fax: +44-0-2920744043<br>Email: <a href="mailto:michaela.john@wales.nhs.uk" target="_blank">michaela.john@wales.nhs.uk</a></li>
-                <li style="padding-bottom:1em;">Christopher Anderson, Senior Clinical Scientist<br>Phone: +44-2920742641<br>Fax: +44-2920744043<br>Email: <a href="mailto:christopher.anderson@wales.nhs.uk" target="_blank">christopher.anderson@wales.nhs.uk</a></li>
-                <li style="padding-bottom:1em;">Peter Davies, Clinical Scientist<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:daviespa2@cf.ac.uk" target="_blank">daviespa2@cf.ac.uk</a></li><li>Laz Lazarou, Clinical Scientist<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:laz.lazarou@wales.nhs.uk" target="_blank">laz.lazarou@wales.nhs.uk</a></li>
-                <li style="padding-bottom:1em;">Sheila Palmer-Smith, Senior Clinical Scientist<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:sheila.palmer-smith@wales.nhs.uk" target="_blank">sheila.palmer-smith@wales.nhs.uk</a></li>
-                <li style="padding-bottom:1em;">Helen Roberts, Senior Clinical Scientist<br>Phone: +44-2920742641<br>Fax: +44-2920744043<br>Email: <a href="mailto:helen.roberts20@wales.nhs.uk" target="_blank">helen.roberts20@wales.nhs.uk</a></li>
-                <li style="padding-bottom:1em;">Lyndon Rosser, Clinical Scientist<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:lyndon.rosser@wales.nhs.uk" target="_blank">lyndon.rosser@wales.nhs.uk</a></li>
-                <li style="padding-bottom:1em;">Sharon Whatley, Senior Clinical Scientist<br>Phone: +44 0 2920742641<br>Fax: +44 0 2920744043<br>Email: <a href="mailto:linda.meredith@wales.nhs.uk" target="_blank">linda.meredith@wales.nhs.uk</a></li></ul>
+                <ul class="list-unstyled">
+                {% for p in lab.personnel_set.all %}
+                <li style="padding-bottom:1em;">
+                    {{ p.first_name }} {{ p.last_name }}, {{ p.role }}<br>
+                    Phone: {{ p.phone }}<br>
+                    Fax: {{ p.fax }}<br>
+                    Email: <a href="mailto:{{ p.email }}" target="_blank">{{ p.email }}</a>
+                </li>
+                {% endfor %}
+                </ul>
               </div>
             </div>
           </div>
@@ -61,40 +63,29 @@
               <div class="table-responsive">
                 <table class="table table-striped table-hover">
                   <tbody>
-                    <tr><td>Autosomal hypohidrotic ectodermal dysplasia</td><td>1 test</td></tr>
-                    <tr><td>Azorean disease</td><td>1 test</td></tr>
-                    <tr><td>Baraitser-Winter syndrome 1</td><td>1 test</td></tr>
-                    <tr><td>Baraitser-Winter Syndrome 2</td><td>1 test</td></tr>
-                    <tr><td>Breast-ovarian cancer, familial 1</td><td>1 test</td></tr>
-                    <tr><td>Breast-ovarian cancer, familial 2</td><td>1 test</td></tr>
-                    <tr><td>Christianson syndrome</td><td>1 test</td></tr>
-                    <tr><td>Cystic fibrosis</td><td>1 test</td></tr>
-                    <tr><td>Deafness, autosomal recessive 1A</td><td>2 tests</td></tr>
-                    <tr><td>Deafness, nonsyndromic sensorineural, mitochondrial</td><td>1 test</td></tr>
-                    <tr><td>Dominant hereditary optic atrophy</td><td>1 test</td></tr>
-                    <tr><td>Dystrophinopathies</td><td>1 test</td></tr>
-                    <tr><td>Early infantile epileptic encephalopathy 2</td><td>1 test</td></tr>
-                    <tr><td>Early infantile epileptic encephalopathy 4</td><td>1 test</td></tr>
-                    <tr><td>Spinocerebellar ataxia 2</td><td>1 test</td></tr>
-                    <tr><td>Spinocerebellar ataxia 6</td><td>1 test</td></tr>
-                    <tr><td>Spinocerebellar ataxia 7</td><td>1 test</td></tr>
-                    <tr><td>Steinert myotonic dystrophy syndrome</td><td>1 test</td></tr>
-                    <tr><td>Tuberous sclerosis 1</td><td>1 test</td></tr>
-                    <tr><td>Tuberous sclerosis 2</td><td>1 test</td></tr>
-                    <tr><td>Turcot syndrome</td><td>1 test</td></tr>
-                    <tr><td>Wagner syndrome</td><td>1 test</td></tr>
+                    {% for t in lab.labtest_set.all %}
+                    <tr><td>{{ t.name }}</td></tr>
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>
             </div>
 
             <div class="panel panel-default">
-              <div class="panel-heading">
-                <h2 class="panel-title">List of Services</h2>
-              </div>
-              <div class="panel-body">
-                <p>This lab has no services.</p>
-              </div>
+                <div class="panel-heading">
+                    <h2 class="panel-title">List of Services</h2>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                    {% if lab.services.all %}
+                    {% for s in lab.services.all %}
+                        <li style="padding-bottom:1em;">{{ s.name }}</li>
+                    {% endfor %}
+                    {% else %}
+                        <li style="padding-bottom:1em;">This lab has no services.</li>
+                    {% endif %}
+                    </ul>
+                </div>
             </div>
 
             <div class="panel panel-default">
@@ -102,7 +93,15 @@
                 <h2 class="panel-title">List of Certifications</h2>
               </div>
               <div class="panel-body">
-                <p>CPA, Number: 2381, Expiration date: 2016-09-01</p>
+                <ul class="list-unstyled">
+                {% if lab.certification_set.all %}
+                {% for c in lab.certification_set.all %}
+                    <li style="padding-bottom:1em;">{{ c.name }}, Number: {{ c.number }}, Expiration date: {{ c.date_expiration }}</li>
+                {% endfor %}
+                {% else %}
+                    <li style="padding-bottom:1em;">This lab has no certification.</li>
+                {% endif %}
+                </ul>
               </div>
             </div>
           </div>
