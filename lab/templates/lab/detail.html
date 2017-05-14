@@ -6,6 +6,12 @@
 
 {% load staticfiles %}
 
+{% block navbar %}
+    {% with country.id as country_id %}
+    {{ block.super }}
+    {% endwith %}
+{% endblock navbar %}
+
 {% block content %}
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 

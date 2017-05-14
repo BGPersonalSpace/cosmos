@@ -4,6 +4,14 @@
 {{ country.name }} - Cosmos
 {% endblock pagetitle %}
 
+{% load staticfiles %}
+
+{% block navbar %}
+    {% with country.id as country_id %}
+    {{ block.super }}
+    {% endwith %}
+{% endblock navbar %}
+
 {% block content %}
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -40,7 +48,7 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                   <div class="panel-body">
-                    <p>{{ country.standard_regulation }}</p>
+                    <p>{{ country.standard_regulation | safe }}</p>
                   </div>
                 </div>
               </div>
@@ -66,7 +74,7 @@
                 </div>
                 <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                   <div class="panel-body">
-                    <p>{{ country.dna_analysis_regulation }}</p>
+                    <p>{{ country.dna_analysis_regulation | safe }}</p>
                   </div>
                 </div>
               </div>
@@ -79,7 +87,7 @@
                 </div>
                 <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
                   <div class="panel-body">
-                    <p>{{ country.dna_storage_regulation }}</p>
+                    <p>{{ country.dna_storage_regulation | safe }}</p>
                   </div>
                 </div>
               </div>
@@ -92,7 +100,7 @@
                 </div>
                 <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
                   <div class="panel-body">
-                    <p>{{ country.dna_reporting_regulation }}</p>
+                    <p>{{ country.dna_reporting_regulation | safe }}</p>
                   </div>
                 </div>
               </div>

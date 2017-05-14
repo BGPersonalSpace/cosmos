@@ -53,7 +53,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Cosmos</a>
+        <a class="navbar-brand" href="{% url 'country:countries' %}">Cosmos</a>
       </div>
       <!-- /.navbar-header -->
 
@@ -61,19 +61,19 @@
         <div class="sidebar-nav navbar-collapse">
           <ul class="nav" id="side-menu">
             <li>
-              <a href="index.html"><i class="fa fa-arrow-left fa-fw"></i> Back to Map</a>
+              <a href="{% url 'country:countries' %}"><i class="fa fa-arrow-left fa-fw"></i> Back to Map</a>
             </li>
             <li>
               &nbsp;
             </li>
             <li>
-              <a href="country.html"><i class="fa fa-dashboard fa-fw"></i> Summary</a>
+              <a href="{% url 'country:country_detail' country_id %}"><i class="fa fa-dashboard fa-fw"></i> Summary</a>
             </li>
             <li>
-              <a href="tests.html"><i class="fa fa-flask fa-fw"></i> Available Tests &amp; Genes</a>
+              <a href="{% url 'country:tests_by_country' country_id %}"><i class="fa fa-flask fa-fw"></i> Available Tests &amp; Genes</a>
             </li>
             <li>
-              <a href="labs.html"><i class="fa fa-hospital-o fa-fw"></i> Clinical Laboratories</a>
+              <a href="{% url 'country:labs_by_country' country_id %}"><i class="fa fa-hospital-o fa-fw"></i> Clinical Laboratories</a>
             </li>
             <li>
               <a href="#"><i class="fa fa-institution fa-fw"></i> Societies &amp; Organisations</a>
