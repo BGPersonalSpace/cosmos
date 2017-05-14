@@ -19,6 +19,7 @@ from django.conf import settings
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^', include('country.urls', namespace='country')),
     url(r'^country/', include('country.urls', namespace='country')),
     url(r'^lab/', include('lab.urls', namespace='lab')),
     url(r'^admin/', admin.site.urls),
